@@ -22,6 +22,17 @@ int main() {
 
     printf("%d\n%d\n%d\n%p\n%p\n%p\n%d\n%d\n%d\n",x, y, z,p,q,r,*p,*q,*r);
 
+    printf("Swapping pointers");
+
+    int *temp;
+    temp = r;
+    r = p ;
+    p = q ;
+    q = temp ; 
+
+    printf("%d\n%d\n%d\n%p\n%p\n%p\n%d\n%d\n%d\n",x, y, z,p,q,r,*p,*q,*r);
+
+
     
     return 0;
 }
