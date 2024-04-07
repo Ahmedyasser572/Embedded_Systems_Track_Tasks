@@ -31,5 +31,9 @@ int main(void)
     ++(*ptr);
     printf("%x\n", *ptr);
 
+    printf("the first increment was the value in the pointer\
+the second it incremented but on the address with a step 4 bytes(size of integer)\
+the third the same of the first but pre-increment rather than post-increment");
+
     return 0;
 }
