@@ -20,20 +20,20 @@ int main(void)
            "Apply this role on the rest.\n");
 
     int *ptr;
-    int hex = 0x66;
+    int hexa = 0x66;
 
-    ptr = &hex;
+    ptr = &hexa;
 
     (*ptr)++;
     printf("%x\n", *ptr);
-    ++ptr;
+    *++ptr;
     printf("%x\n", *ptr);
     ++(*ptr);
     printf("%x\n", *ptr);
 
-    printf("the first increment was the value in the pointer\
-the second it incremented but on the address with a step 4 bytes(size of integer)\
-the third the same of the first but pre-increment rather than post-increment");
+    printf("the first increment was the value in the pointer"
+"the second it incremented but on the address with a step 4 bytes(size of integer)"
+"the third the same of the first but pre-increment rather than post-increment");
 
     return 0;
 }
