@@ -24,12 +24,12 @@ int main(void)
 
     ptr = &hexa;
 
-    (*ptr)++;
-    printf("%x\n", *ptr);
+    *ptr++;
+    printf("%p\n", ptr);
     *++ptr;
-    printf("%x\n", *ptr);
-    ++(*ptr);
-    printf("%x\n", *ptr);
+    printf("%p\n", ptr);
+    ++*ptr;
+    printf("%p\n", ptr);
 
     printf("the first increment was the value in the pointer"
 "the second it incremented but on the address with a step 4 bytes(size of integer)"
