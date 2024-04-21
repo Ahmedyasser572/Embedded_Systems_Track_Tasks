@@ -37,28 +37,28 @@ scanf("%d",&operation);
             scanf("%f",&num1);
             printf("enter the second number:");
             scanf("%f",&num2);
-            printf("the result is %f", add(num1,num2));
+            printf("the result is %f\n", add(num1,num2));
             break;
         case 2:
             printf("enter the first number:");
             scanf("%f",&num1);
             printf("enter the second number:");
             scanf("%f",&num2);
-            printf("the result is %f", subtract(num1,num2));
+            printf("the result is %f\n", subtract(num1,num2));
             break;
         case 3:
              printf("enter the first number:");
             scanf("%f",&num1);
             printf("enter the second number:");
             scanf("%f",&num2);
-           printf("the result is %f", multiply(num1,num2));
+           printf("the result is %f\n", multiply(num1,num2));
             break;
         case 4:
              printf("enter the first number:");
             scanf("%f",&num1);
             printf("enter the second number:");
             scanf("%f",&num2);
-           printf("the result is %f", divide(num1,num2));
+           printf("the result is %f\n", divide(num1,num2));
             break;
         default:
             break;
