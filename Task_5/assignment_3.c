@@ -47,7 +47,7 @@ int main() {
 #endif
 
     printf("Sorted numbers: ");
-    for (int i = 0; i < SIZE; i++) {
+    for (int i = 0; i < 10; i++) {
         printf("%d ", arr[i]);
     }
 

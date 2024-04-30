@@ -17,11 +17,11 @@ typedef                 long    double      f96;
 
 typedef struct StudentInfo
 {   
-    unsigned int marks:3; // Student's marks 
-    unsigned int roll_number:4;             // Student's roll number
-    unsigned int age:8;                     // Student's age
-    char * name;  // Student's name                  
-    char *address;
+unsigned int marks:3; // Student's marks 
+unsigned int roll_number:4;             // Student's roll number
+unsigned int age:8;                     // Student's age
+char * name;  // Student's name                  
+char *address;
 } studentInfo;
 
 struct bitCard {
