@@ -1,0 +1,3 @@
+# Library Management System
+
+A comprehensive library management system designed to streamline the organization and tracking of books, patrons, and borrowing activities. The system enables librarians to efficiently manage book inventories, track book loans and returns, and maintain patron records. It provides features for searching books by title or author, managing borrowing deadlines, and generating reports on library activities and book availability.
