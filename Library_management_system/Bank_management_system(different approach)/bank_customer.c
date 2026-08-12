@@ -7,24 +7,18 @@
 
 Customer* add_customer(Customer* head, const char *name, double cash, const char* phone, int id)
 {   
-    // initializing the parameters of the customer 
-    Customer *  newPtr = malloc(sizeof(Customer));
+    Customer *newPtr = malloc(sizeof(Customer));
 
     if (newPtr ==NULL){
-    printf("allocation failed");
+        printf("Allocation failed.\n");
+        return head;
     }
 
-    for (int i =0 ; i < strlen(name);i++)
-    {
-        newPtr -> name[i] = name[i];
-    }
-    newPtr -> cash = cash;
-    for (int j =0 ; j< strlen(phone);j++)
-    {
-        newPtr -> phone[j] = phone[j];
-    }
-    newPtr -> id = id;
-    newPtr -> next = NULL;
+    snprintf(newPtr->name, NAME_MAX, "%s", name);
+    snprintf(newPtr->phone, PHONE_MAX, "%s", phone);
+    newPtr->cash = cash;
+    newPtr->id = id;
+    newPtr->next = NULL;
 
     if (head == NULL)
     {
@@ -59,26 +53,8 @@ Customer* edit_customer(Customer* head, int id, const char* new_name, const char
     }
 
 
-    if (current-> id == id)
-    {
-
-        for (int k =0 ; k < strlen(current->name);k++)
-    {
-        current -> name[k] = '\0';
-    }
-
-
-    for (int i =0 ; i < strlen(new_name);i++)
-    {
-        current -> name[i] = new_name[i];
-    }
-    current->name[strlen(new_name)] = '\0';
-
-    for (int j =0 ; j < strlen(new_phone);j++)
-    {
-        current -> phone[j] = new_phone[j];
-    }
-    }
+    snprintf(current->name, NAME_MAX, "%s", new_name);
+    snprintf(current->phone, PHONE_MAX, "%s", new_phone);
 
     return head;
 }
@@ -110,16 +86,14 @@ void view_customer(Customer* head, int id)
 }
 Customer * delete_customer(Customer* head, int id)
 {   
-    int counter = 0;
     Customer * current = head;
     Customer * prev = NULL;
-    while(current-> id != id && current != NULL ){
+    while(current != NULL && current->id != id){
         prev = current;
         current = current -> next;
-        counter++;
     }
 
-    if (current-> id != id || current == NULL)
+    if (current == NULL)
     {
         printf("The id is wrong or unavailable");
         return head;
@@ -158,7 +132,12 @@ Customer* transfer_money(Customer* head, int from_id, int to_id, double amount)
         return head;
     }
 
-    if (sender -> cash <= amount)
+    if (sender == receiver) {
+        printf("Sender and receiver must be different customers.\n");
+        return head;
+    }
+
+    if (amount <= 0 || sender->cash < amount)
     {
         printf("The sender doesn't have enough cash");
         return head;
@@ -176,13 +155,18 @@ Customer* deposit_money(Customer* head, int id, double amount)
 {
    Customer * current = head;
 
-    while(current != NULL != id && current-> id != id ){
+    while(current != NULL && current->id != id){
         current = current -> next ;
     }
 
     if (current == NULL)
     {
         printf("The id is wrong or unavailable\n");
+        return head;
+    }
+
+    if (amount <= 0) {
+        printf("Amount must be greater than zero.\n");
         return head;
     }
 
@@ -196,13 +180,18 @@ Customer* withdraw_money(Customer* head, int id, double amount)
 {
     Customer * current = head;
 
-    while(current != NULL != id && current-> id != id ){
+    while(current != NULL && current->id != id){
         current = current -> next ;
     }
 
     if (current == NULL)
     {
         printf("The id is wrong or unavailable\n");
+        return head;
+    }
+
+    if (amount <= 0 || current->cash < amount) {
+        printf("Invalid amount or insufficient balance.\n");
         return head;
     }
 
@@ -228,7 +217,7 @@ Customer * Load_data(Customer *head){
     }
     
     // Read each customer record from file
-    while (fscanf(myfile, "%s %lf %s %d", name, &cash, phone, &id) == 4) {
+    while (fscanf(myfile, "%99s %lf %19s %d", name, &cash, phone, &id) == 4) {
         head = add_customer(head, name, cash, phone, id);
     }
     

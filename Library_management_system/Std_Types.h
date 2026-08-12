@@ -16,6 +16,6 @@ typedef float f32;
 
 typedef double f64;
 typedef long double f96;
-typedef bool boolean;
+
 
 #endif /* STD_TYPES_H */
